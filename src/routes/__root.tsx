@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -25,43 +23,6 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dhruvam Photography & Events — Premium Weddings in Anantapur" },
-      { name: "description", content: "Dhruvam Photography & Events — premium 4K/8K cinematography & end-to-end event management in Anantapur. Capturing moments, creating experiences." },
-      { name: "author", content: "Dhruvam Photography & Events" },
-      { property: "og:title", content: "Dhruvam Photography & Events — Premium Weddings in Anantapur" },
-      { property: "og:description", content: "Dhruvam Photography & Events — premium 4K/8K cinematography & end-to-end event management in Anantapur. Capturing moments, creating experiences." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Dhruvam Photography & Events — Premium Weddings in Anantapur" },
-      { name: "twitter:description", content: "Dhruvam Photography & Events — premium 4K/8K cinematography & end-to-end event management in Anantapur. Capturing moments, creating experiences." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/94446b27-6b3c-4110-809a-4e2f28553c63/id-preview-1f9c81d2--a5096783-43e2-4691-bda8-8524a5b95c2e.lovable.app-1777635756480.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/94446b27-6b3c-4110-809a-4e2f28553c63/id-preview-1f9c81d2--a5096783-43e2-4691-bda8-8524a5b95c2e.lovable.app-1777635756480.png" },
-    ],
-    links: [{ rel: "stylesheet", href: appCss }],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
+  component: () => <Outlet />,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-function RootComponent() {
-  return <Outlet />;
-}
